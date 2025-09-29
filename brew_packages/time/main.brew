@@ -1,4 +1,5 @@
 import ./unix;
+import ./utils;
 
 function time() {
   return timestamp();
