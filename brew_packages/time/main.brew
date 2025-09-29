@@ -5,7 +5,7 @@ function time() {
 }
 
 function fromUnix(time) {
-  unix.fromUnix(time);
+  return unix.fromUnix(time);
 }
 
 function daysInYear(y) {
