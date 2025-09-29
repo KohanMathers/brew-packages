@@ -1,0 +1,40 @@
+import ./main;
+
+function fromUnix(time) {
+  let ts = timestamp();
+  let days = floor(time / 86400);
+  let secondsOfDay = floor(time % 86400);
+
+  let hour = floor(secondsOfDay / 3600);
+  let minute = floor((secondsOfDay % 3600) / 60);
+  let second = floor(secondsOfDay % 60);
+
+  let year = 1970;
+  while(days >= main.daysInYear(year)) {
+    days = days - main.daysInYear(year);
+    year = year + 1;
+  }
+
+  let months = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+  if(main.isLeapYear(year)) {
+    months[1] = 29;
+  }
+
+  let month = 1;
+  while (days >= months[month - 1]) {
+    days = days - months[month - 1];
+    month = month + 1;
+  }
+
+  let day = days + 1;
+
+  return {
+    year: year,
+    month: month,
+    day: day,
+    hour: hour,
+    minute: minute,
+    second: second,
+    timestamp: ts
+  };
+}
