@@ -1,4 +1,4 @@
-import ./main;
+import ./utils;
 
 function fromUnix(time) {
   let ts = timestamp();
@@ -10,13 +10,13 @@ function fromUnix(time) {
   let second = floor(secondsOfDay % 60);
 
   let year = 1970;
-  while(days >= main.daysInYear(year)) {
-    days = days - main.daysInYear(year);
+  while(days >= utils.daysInYear(year)) {
+    days = days - utils.daysInYear(year);
     year = year + 1;
   }
 
   let months = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-  if(main.isLeapYear(year)) {
+  if(utils.isLeapYear(year)) {
     months[1] = 29;
   }
 
